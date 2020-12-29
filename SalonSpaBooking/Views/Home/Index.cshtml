@@ -1,0 +1,58 @@
+﻿@model SalonSpaBooking.BusinessLayer.ViewModels.ServicesPlanViewModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-right" style="margin-top:10px;">
+    @Html.ActionLink("Salon Appointment", "SalonAppointment", "Home", new { @class = "btn btn-danger" })
+</div>
+<div class="text-center" style="margin-top:10px;">
+    <h4>Search Salon Services</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.PlanName)</th>
+            <th>@Html.DisplayNameFor(m => m.Title)</th>
+            <th>@Html.DisplayNameFor(m => m.Description)</th>
+            <th>@Html.DisplayNameFor(m => m.Price)</th>
+            <th>@Html.DisplayNameFor(m => m.ServiceId)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.PageCount() == 0)
+        {
+            <tr>
+                <td style="color:red;" colspan="12">
+                    Records not found |
+                    @Html.ActionLink("Go To Home", "Index", "Medicine", new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var product in Model.PaginatedServicesPlan())
+            {
+    <tr>
+        <td>@product.PlanName</td>
+        <td>@product.Title</td>
+        <td>@product.Description</td>
+        <td>@product.Price.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</td>
+        <td>@product.ServiceId</td>
+        <td>
+            @Html.ActionLink("Details", "Details", "Home", new { PlanId = product.PlanId, @class = "btn btn-primary" })
+        </td>
+    </tr>
+            }
+        }
+    </tbody>
+</table>
+<ul class="pagination">
+    @for (int i = 1; i <= Model.PageCount(); i++)
+    {
+        <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+        </li>
+    }
+</ul>

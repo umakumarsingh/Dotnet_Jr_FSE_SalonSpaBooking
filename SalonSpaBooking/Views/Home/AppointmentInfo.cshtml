@@ -1,0 +1,50 @@
+﻿@model SalonSpaBooking.Entities.Appointment
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="card" style="width:100%; margin-top:10px;">
+    <div class="card-header bg-dark text-white">
+        <h5>Appintment Details</h5>
+        <h6>Keep your details while meeting with Salon Counnter</h6>
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.AppointmentId)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.AppointmentId)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Name)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Name)</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Mobile)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Mobile)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Email)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Takendate)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Takendate)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.ServicesPlan)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.ServicesPlan)</td>
+            </tr>
+        </table>
+        <p>
+            @Html.ActionLink("Back to Home", "Index", "Home", new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <div class="card-footer bg-dark text-white">
+        <h6>Thanks for using Online Salon and Spa Appointment Booking..</h6>
+    </div>
+</div>
